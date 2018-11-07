@@ -1,32 +1,34 @@
 select last_name,first_name from hr.employees;
 
---Á¬½ÓÁ½ÁÐÊý¾Ý£¬²¢ÇÒ¿ÉÒÔÔÙÁ½ÁÐÊý¾ÝÖÐ¼ä½øÐÐ´¦Àí
-select last_name || ' ' || first_name as ÐÕÃû from hr.employees;
---Ïû³ýÖØ¸´×Ö¶Î
+--è¿žæŽ¥ä¸¤åˆ—æ•°æ®ï¼Œå¹¶ä¸”å¯ä»¥å†ä¸¤åˆ—æ•°æ®ä¸­é—´è¿›è¡Œå¤„ç†
+select last_name || ' ' || first_name as å§“å from hr.employees;
+
+--æ¶ˆé™¤é‡å¤å­—æ®µ
 select department_id from hr.employees;
 select distinct department_id from hr.employees;
 
 select * from hr.employees where salary>5000
---between..and.. ÊÇ±ÕÇø¼ä
+--between..and.. æ˜¯é—­åŒºé—´
 select * from hr.employees where salary between 2900 and 6000;
 select * from hr.employees where salary in (3000,6000)
---Ä£ºý²éÑ¯£¬%±íÊ¾ÈÎÒâÆ¥Åä£¬_±íÊ¾ÓÐ£¬²¢ÇÒÖ»ÓÐÒ»¸ö
+
+--æ¨¡ç³ŠæŸ¥è¯¢ï¼Œ%è¡¨ç¤ºä»»æ„åŒ¹é…ï¼Œ_è¡¨ç¤ºæœ‰ï¼Œå¹¶ä¸”åªæœ‰ä¸€ä¸ª
 select * from hr.employees where first_name like '%a_';
 select * from hr.employees where department_id is null;
---Óë»ò·Ç and or not
+--ä¸Žæˆ–éž and or not
 
---ÅÅÐò desc½µÐò ascÉýÐò
+--æŽ’åº descé™åº ascå‡åº
 select * from hr.employees order by salary asc
 
---¹ØÁª²éÑ¯
+--å…³è”æŸ¥è¯¢
 select e.first_name,e.department_id from hr.employees e;
 select d.department_id,d.department_name from hr.departments d;
 select e.first_name,d.department_name from hr.employees e left join hr.departments d on e.department_id=d.department_id;
 
---Í³¼Æº¯Êýcount max min avg
-select count(e.salary) as ÔÂÐ½¸ßÓÚ5000µÄÈËÊý from hr.employees e where e.salary>5000
+--ç»Ÿè®¡å‡½æ•°count max min avg
+select count(e.salary) as æœˆè–ªé«˜äºŽ5000çš„äººæ•° from hr.employees e where e.salary>5000
 select max(salary),min(salary) from hr.employees e where e.department_id =100;
 select avg(salary) from hr.employees e;
 
---·Ö×é²éÑ¯
+--åˆ†ç»„æŸ¥è¯¢
 select avg(salary),e.department_id from hr.employees e group by e.department_id

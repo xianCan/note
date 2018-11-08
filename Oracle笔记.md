@@ -32,3 +32,9 @@ select avg(salary) from hr.employees e;
 
 --分组查询
 select avg(salary),e.department_id from hr.employees e group by e.department_id
+
+--视图
+create view herosimple as(
+       select int,name from hero
+)
+select * from herosimple
